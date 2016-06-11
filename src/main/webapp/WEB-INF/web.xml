@@ -1,0 +1,51 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+
+	<!-- Enable CORS (cross origin resource sharing) -->
+	<!-- http://tomcat.apache.org/tomcat-7.0-doc/config/filter.html#CORS_Filter -->
+	<filter>
+		<filter-name>CorsFilter</filter-name>
+		<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+		<init-param>
+			<param-name>cors.allowed.headers</param-name>
+			<param-value>Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CorsFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<!-- Defines a servlet -->
+		<servlet-name>cem01</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+
+		<!-- Jersey package scanning -->
+		<!-- Instruct Jersey to scan these packages and register any found resources 
+			and providers automatically -->
+		<!-- https://jersey.java.net/documentation/latest/deployment.html#deployment.servlet -->
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>br.com.cem01.service</param-value>
+		</init-param>
+
+		<!-- Convert your Java Objects to JSON and back -->
+		<init-param>
+			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Specifies the web container of which java servlet -->
+	<!-- should be invoked for a url given by client. -->
+	<servlet-mapping>
+		<servlet-name>cem01</servlet-name>
+		<url-pattern>/API/*</url-pattern>
+	</servlet-mapping>
+</web-app>

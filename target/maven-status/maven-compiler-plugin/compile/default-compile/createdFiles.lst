@@ -1,0 +1,3 @@
+br/com/cem01/service/DisciplineService.class
+br/com/cem01/EntityManager/JpaEntityManager.class
+br/com/cem01/model/DisciplineModel.class
