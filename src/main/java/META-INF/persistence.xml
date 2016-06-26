@@ -5,6 +5,7 @@
 	<persistence-unit name="cem01">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.com.cem01.model.DisciplineModel</class>
+		<class>br.com.cem01.model.TeacherModel</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/cem01" />
